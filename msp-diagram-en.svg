@@ -1,0 +1,87 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f8f9fa" />
+  
+  <!-- Packet Structure -->
+  <g transform="translate(50, 60)">
+    <text x="0" y="-20" font-family="Arial" font-size="18" font-weight="bold">MSP Packet Structure</text>
+    
+    <!-- Header -->
+    <rect x="0" y="0" width="100" height="40" fill="#ffcccb" stroke="#333" />
+    <text x="50" y="25" font-family="Arial" font-size="14" text-anchor="middle">SYNC (2B)</text>
+    
+    <rect x="100" y="0" width="100" height="40" fill="#c2e0ff" stroke="#333" />
+    <text x="150" y="25" font-family="Arial" font-size="14" text-anchor="middle">Length (2B)</text>
+    
+    <rect x="200" y="0" width="70" height="40" fill="#d6f5d6" stroke="#333" />
+    <text x="235" y="25" font-family="Arial" font-size="14" text-anchor="middle">VER (1B)</text>
+    
+    <rect x="270" y="0" width="70" height="40" fill="#fff2cc" stroke="#333" />
+    <text x="305" y="25" font-family="Arial" font-size="14" text-anchor="middle">Type (1B)</text>
+    
+    <rect x="340" y="0" width="200" height="40" fill="#e6e6fa" stroke="#333" />
+    <text x="440" y="25" font-family="Arial" font-size="14" text-anchor="middle">Payload (Variable)</text>
+    
+    <rect x="540" y="0" width="70" height="40" fill="#ffe4b5" stroke="#333" />
+    <text x="575" y="25" font-family="Arial" font-size="14" text-anchor="middle">CRC (1B)</text>
+    
+    <!-- Description -->
+    <text x="0" y="70" font-family="Arial" font-size="14">
+      • SYNC: Fixed value 0xAA55
+    </text>
+    <text x="0" y="95" font-family="Arial" font-size="14">
+      • Length: Total packet length (payload length + 7)
+    </text>
+    <text x="0" y="120" font-family="Arial" font-size="14">
+      • VER: Protocol version (currently 1)
+    </text>
+    <text x="0" y="145" font-family="Arial" font-size="14">
+      • Type: 0x10 (DATA) or 0x11 (ACK)
+    </text>
+    <text x="0" y="170" font-family="Arial" font-size="14">
+      • CRC: Simple checksum of payload (sum mod 256)
+    </text>
+  </g>
+  
+  <!-- Communication Flow -->
+  <g transform="translate(50, 300)">
+    <text x="0" y="-20" font-family="Arial" font-size="18" font-weight="bold">MSP Communication Flow</text>
+    
+    <!-- Client and Server -->
+    <rect x="50" y="0" width="120" height="60" fill="#c2e0ff" stroke="#333" rx="10" ry="10" />
+    <text x="110" y="35" font-family="Arial" font-size="16" text-anchor="middle">Client</text>
+    
+    <rect x="450" y="0" width="120" height="60" fill="#d6f5d6" stroke="#333" rx="10" ry="10" />
+    <text x="510" y="35" font-family="Arial" font-size="16" text-anchor="middle">Server</text>
+    
+    <!-- Timeline -->
+    <line x1="110" y1="60" x2="110" y2="240" stroke="#333" stroke-width="2" stroke-dasharray="5,5" />
+    <line x1="510" y1="60" x2="510" y2="240" stroke="#333" stroke-width="2" stroke-dasharray="5,5" />
+    
+    <!-- Message Flow -->
+    <polygon points="110,100 480,130 480,170 110,140" fill="#fff2cc" stroke="#333" />
+    <text x="300" y="140" font-family="Arial" font-size="14" text-anchor="middle">Data Packet (TYPE_DATA)</text>
+    <polygon points="510,170 140,200 140,240 510,210" fill="#ffcccb" stroke="#333" />
+    <text x="300" y="210" font-family="Arial" font-size="14" text-anchor="middle">Acknowledgment (TYPE_ACK)</text>
+    
+    <!-- Arrows -->
+    <polygon points="480,150 490,150 485,160" fill="#333" />
+    <polygon points="140,220 130,220 135,210" fill="#333" />
+  </g>
+  
+  <!-- Program Structure -->
+  <g transform="translate(400, 480)">
+    <text x="0" y="-20" font-family="Arial" font-size="18" font-weight="bold">Key Components of msp.py</text>
+    
+    <rect x="0" y="0" width="350" height="100" fill="#f0f0f0" stroke="#333" rx="5" ry="5" />
+    <text x="175" y="25" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">MSP Protocol Implementation</text>
+    
+    <line x1="175" y1="40" x2="175" y2="90" stroke="#333" stroke-width="1" />
+    
+    <rect x="10" y="50" width="155" height="40" fill="#c2e0ff" stroke="#333" rx="5" ry="5" />
+    <text x="87" y="75" font-family="Arial" font-size="14" text-anchor="middle">MSPClient</text>
+    
+    <rect x="185" y="50" width="155" height="40" fill="#d6f5d6" stroke="#333" rx="5" ry="5" />
+    <text x="262" y="75" font-family="Arial" font-size="14" text-anchor="middle">MSPServer</text>
+  </g>
+</svg>
