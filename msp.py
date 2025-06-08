@@ -17,7 +17,11 @@ def build_packet(packet_type, payload):
 def parse_packet(data):
     if data[:2] != SYNC:
         return None, 'Invalid SYNC'
+    if len(data) < 7:
+        return None, 'Packet too short'
     total_length = struct.unpack('!H', data[2:4])[0]
+    if len(data) != total_length:
+        return None, 'Invalid length'
     version, packet_type = data[4], data[5]
     payload = data[6:-1]
     crc = data[-1]
